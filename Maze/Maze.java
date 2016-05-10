@@ -5,6 +5,9 @@ import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
 import java.util.ArrayList;
+import java.awt.Event;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * Write a description of class Maze here.
@@ -17,6 +20,8 @@ public class Maze
     // instance variables - replace the example below with your own
     private ActorWorld world;
     
+    private Sprite user;
+    
     private final int ROWS = 20;
     private final int COLS = 20;
 
@@ -28,7 +33,7 @@ public class Maze
         // initialise instance variables
         BoundedGrid<Actor> grid = new BoundedGrid<Actor>(ROWS,COLS);
         world = new ActorWorld(grid);
-        addWalls();
+        add();
         world.show();
     }
 
@@ -38,7 +43,7 @@ public class Maze
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public void addWalls(){
+    public void add(){
         // put your code here
         int[] rows = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,
                       3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,6,6,
@@ -59,8 +64,27 @@ public class Maze
         
         Grid<Actor> grid = world.getGrid();
         
-        for(int i = 0; i < rows.length; i++){ grid.put(new Location(rows[i], cols[i]), new Rock());}
+        for(int i = 0; i < rows.length; i++){ grid.put(new Location(rows[i], cols[i]), new Wall());}
+        
+        grid.put(new Location(19,1), user);
+        //userPoint = new Point(19,1);
     }
     
     public static void main(String[] args){Maze maze = new Maze();}
-}
+    
+    public class KeyList implements KeyListener{
+        public void keyPressed(KeyEvent event){
+            if(event.getKeyCode()==37){
+                if(user.getCol()!=0&&world.get(new Location(user.getRow(),user.getCol()-1))==null){
+                    moveTo(new Location(user.getRow(),user.getCol()-1));}}
+            else if(event.getKeyCode()==38){
+                if(user.getRow()!=0&&world.get(new Location(user.getRow()-1,user.getCol())==null)){
+                    moveTo(new Location(user.getRow()-1,user.getCol()));}}
+            else if(event.getKeyCode()==39){
+                if(user.getCol()!=19&&world.get(new Location(user.getRow(),user.getCol()+1))==null){
+                    moveTo(new Location(user.getRow(),user.getCol()+1));}}
+            else if(event.getKeyCode()==40){
+                if(user.getRow()!=19&&world.get(new Location(user.getRow()+1,user.getCol())==null)){
+                    moveTo(new Location(user.getRow()+1,user.getCol()));}}}
+        public void keyReleased(KeyEvent event){}
+        public void keyTyped(KeyEvent event){}}}
