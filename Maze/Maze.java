@@ -4,7 +4,6 @@ import info.gridworld.actor.Rock;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
-import java.util.ArrayList;
 import java.awt.Event;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -86,4 +85,8 @@ public class Maze extends ActorWorld{
         return true;}
     
     public static void main(String[] args){
+        /**
+         * Creates maze
+         * 
+         */
         Maze maze = new Maze();}}
