@@ -54,16 +54,17 @@ public class Maze extends ActorWorld{
         
         Grid<Actor> grid = this.getGrid();
         user.putSelfInGrid(grid,new Location(19,1));
-        for(int i = 0; i < rows.length; i++){ grid.put(new Location(rows[i], cols[i]), new Wall());}}
+        for(int i = 0; i < rows.length; i++){
+            grid.put(new Location(rows[i], cols[i]), new Wall());}}
     
+     /**
+     * If possible, moves user into desired location
+     * 
+     * @param description which direction the user wants to move in
+     * @param loc the location
+     * 
+     */
     public boolean keyPressed(String description, Location loc){
-        /**
-         * If possible, moves user into desired location
-         * 
-         * @param description which direction the user wants to move in
-         * @param loc the location
-         * 
-         */
         Grid<Actor> grid = this.getGrid();
         
         if(description.equals("LEFT")){
@@ -84,9 +85,9 @@ public class Maze extends ActorWorld{
                 
         return true;}
     
+    /**
+     * Creates maze
+     * 
+     */
     public static void main(String[] args){
-        /**
-         * Creates maze
-         * 
-         */
         Maze maze = new Maze();}}
