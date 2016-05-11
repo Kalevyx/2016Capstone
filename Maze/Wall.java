@@ -1,15 +1,11 @@
 import info.gridworld.actor.Actor;
 
 /**
- * Write a description of class Wall here.
+ * Wall actor
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author @crli
+ * @version May 10, 2016
  */
-public class Wall extends Actor
-{
-    public Wall()
-    {
-        super();
-    }
-}
+public class Wall extends Actor{
+    public Wall(){
+        super();}}
