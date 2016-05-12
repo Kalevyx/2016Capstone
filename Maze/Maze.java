@@ -4,9 +4,6 @@ import info.gridworld.actor.Rock;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
-import java.awt.Event;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 /**
  * Write a description of class Maze here.
